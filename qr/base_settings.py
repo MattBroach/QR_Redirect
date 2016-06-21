@@ -43,7 +43,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
 )
 
 
@@ -117,3 +116,21 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'base_static'),
 )
+
+# Django token Consumer settings
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'token_consumer.backends.TokenConsumerBackend'
+]
+
+TOKEN_CONSUMER = {
+    'AUTH_ENDPOINTS': {
+        'LOGIN': 'rest-auth/login/',
+        'LOGOUT': 'rest-auth/logout/',
+    },
+    'API_BASE_URL': 'https://api.axiologue.org/'
+}
+
+LOGIN_SUCCESS_URL = 'index'
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'token_login'

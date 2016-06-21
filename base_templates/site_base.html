@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="App for setting, managing, and retrieving URLs for the Axiologue Katz's Deli installation">
+  <meta name="keywords" content="ethics, shopping, corporate social responsibility, shoes, labor, environment, athletic shoes, running, articles, data, crowdsourced, Katz's Deli, art, installation, QR, QR codes, Matt Nishi-Broach">
+  <meta name="author" content="Matt Nishi Broach">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Axiologue QR Manager</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}" sizes="16x16">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/qr.css' %}">
+
+</head>
+<body>
+  {% block content %}
+  {% endblock content %}
+</body>
+</html>
