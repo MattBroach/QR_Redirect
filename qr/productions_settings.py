@@ -12,3 +12,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # Development URLs
 ROOT_URLCONF = 'qr.production_urls'
+
+# Sites
+SITE_ID = 3
+USE_SSL = True

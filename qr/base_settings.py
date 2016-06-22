@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_extensions',
     'token_consumer',
+    'redirect'
 ]
 
 
@@ -134,3 +135,7 @@ TOKEN_CONSUMER = {
 LOGIN_SUCCESS_URL = 'index'
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'token_login'
+
+# QR CODE SETTINGS
+LINK_COUNT = 120
+LINK_BASE = 'https://www.axiologue.org/#/references/detail/{}'

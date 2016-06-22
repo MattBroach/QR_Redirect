@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="index.html"), name="index"),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^auth/', include('token_consumer.urls')),
+    url(r'^redirect/', include('redirect.urls')),
 ]

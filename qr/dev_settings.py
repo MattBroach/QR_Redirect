@@ -23,5 +23,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 ROOT_URLCONF = 'qr.dev_urls'
 
 # Site for use with django auth
-SITE_ID = 1
-
+SITE_ID = 2
+USE_SSL = False

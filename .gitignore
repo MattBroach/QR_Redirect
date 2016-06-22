@@ -29,3 +29,11 @@ qr/secret_keys.json
 # Linked Dev Files #
 ####################
 token_consumer
+
+# config files #
+################
+config/
+
+# media files #
+###############
+media/
