@@ -37,3 +37,4 @@ config/
 # media files #
 ###############
 media/
+static/

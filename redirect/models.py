@@ -15,6 +15,9 @@ class Redirect(models.Model):
 
     qr_code = models.ImageField(blank=True, upload_to='qr/')
 
+    def __str__(self):
+        return settings.LINK_BASE.format(self.reference_id)
+
     @classmethod
     def new_from_link_id(cls, link_id):
         """
