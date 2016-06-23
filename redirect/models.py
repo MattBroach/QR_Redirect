@@ -15,6 +15,13 @@ class Redirect(models.Model):
 
     qr_code = models.ImageField(blank=True, upload_to='qr/')
 
+    @property 
+    def qr_link(self):
+        domain = Site.objects.get_current().domain
+        protocol = 'https://' if settings.USE_SSL else 'http://'
+
+        return protocol + domain + '/redirect/go/' + str(self.id) + '/'
+
     def __str__(self):
         return settings.LINK_BASE.format(self.reference_id)
 
@@ -26,24 +33,22 @@ class Redirect(models.Model):
         """
         # get base filepath info
         u = uuid.uuid4()
-        base_file = os.path.join('qr', str(u) + '.png')
+        base_file = os.path.join('png', str(u) + '.png')
         filepath = os.path.join(settings.MEDIA_ROOT, base_file)
-        domain = Site.objects.get_current().domain
-        protocol = 'https://' if settings.USE_SSL else 'http://'
 
         # Make the requisite folder, if it doesn't exist
-        folder = os.path.join(settings.MEDIA_ROOT, 'qr')
+        folder = os.path.join(settings.MEDIA_ROOT, 'png')
         if not os.path.exists(folder):
             os.makedirs(folder)
-
-        # create and save associated QR image
-        qr = qrcode.make(protocol + domain + '/redirect/go/' + str(u) + '/')
-        qr.save(filepath)
 
         # create Redirect object
         redirect = cls(id=u,
                        reference_id=link_id,
                        qr_code=base_file)
+
+        # create and save associated QR image
+        qr = qrcode.make(redirect.qr_link)
+        qr.save(filepath)
         redirect.save()
 
         return redirect
